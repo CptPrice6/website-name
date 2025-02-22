@@ -1,8 +1,9 @@
-# download needed things (docker, docker-compose, git, composer, npm, php, nodejs, react etc)
-
-# RUN composer install in backend
-# RUN npm install in frontend
+# download prerequisites and other needed things (docker, docker-compose, git, composer, npm, php, nodejs, react etc)
 
 # ADD .env file
 
-# docker-compose -p website-name up --build -d
+# run: docker-compose -p website-name up --build -d
+
+# add some tests
+
+# add some information how to access
