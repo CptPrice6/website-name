@@ -3,6 +3,14 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const isLocalhost = window.location.hostname === "localhost";
+
+const API_BASE_URL = isLocalhost
+  ? "http://localhost:8000"
+  : `http://${window.location.hostname}:${
+      process.env.BACKEND_EXTERNAL_PORT || 8000
+    }`;
+
 function HomePage() {
   return (
     <div className="container mt-5">
@@ -26,9 +34,7 @@ function RandomNumberPage() {
   const getRandomNumber = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        "http://localhost:8000/api/random-number"
-      );
+      const response = await axios.get(`${API_BASE_URL}/api/random-number`);
       setNumber(response.data.number);
     } catch (error) {
       console.error("Error fetching the number:", error);
